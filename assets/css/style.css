@@ -32,7 +32,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #company-name {
-  color: #007F30;
+  color: #00AB44;
+  font-size: 36px;
 }
 
 /*--------------------------------------------------------------
@@ -583,7 +584,7 @@ section {
 }
 .features .feature-box i {
   line-height: 0;
-  background: #ecf3ff;
+  background: rgba(240, 255, 240);
   padding: 4px;
   margin-right: 10px;
   font-size: 24px;
@@ -665,7 +666,7 @@ section {
 .features .feature-icons .content .icon-box i {
   font-size: 44px;
   line-height: 44px;
-  color: #0245bc;
+  color: #00D853;
   margin-right: 15px;
 }
 .features .feature-icons .content .icon-box p {
