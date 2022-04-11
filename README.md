@@ -1,2 +1,2 @@
 # website
-https://peerexchange.github.io/website/
+https://peerexchange.info/
