@@ -3,12 +3,24 @@
     <head>
         <title>Dashboard - PeerExchange</title>
         <link rel="icon" href="../website/assets/img/globe.png">
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="./dashboard.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h1>Dashboard</h1>
+        <div id="top-nav">
+            <span id="logo">PeerExchange</span>
+            <span id="address">Loading...</span>
+        </div>
+        <div id="left-nav">
+            <span class="title">Organizations (User)</span>
 
+            <span id="all">View all PeerOrgs -></span>
+        </div>
+        <div id="right-nav">
+            <span class="title">Organizations (Admin)</span>
+
+            <span id="new">New Organization -></span>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
         <script src="./dashboard.js"></script>
     </body>
