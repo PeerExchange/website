@@ -90,3 +90,33 @@ body {
 #new:hover {
     cursor: not-allowed;
 }
+
+.row {
+    background-color: #F6F8FA;
+    border-radius: 8px;
+    position: absolute;
+    top: 60px;
+    left: 5%;
+    width: 90%;
+    height: 50px;
+}
+
+.row-title {
+    position: absolute;
+    font-size: 16px;
+    color: rgba(0,0,0,0.8);
+    left: 20px;
+    top: 15px;
+}
+
+.row-link {
+    position: absolute;
+    font-size: 16px;
+    color: rgb(2, 103, 255);
+    right: 20px;
+    top: 15px;
+}
+
+.row-link:hover {
+    cursor: pointer;
+}
