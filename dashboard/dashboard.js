@@ -396,6 +396,9 @@ async function loadOrgs() {
         let contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
         let orgCount = await contract.methods.totalOrgs().call();
 
+        let adminTop = 60;
+        let userTop = 60;
+
         for (let i = 0; i < orgCount; i += 1) {
             let orgAddress = await contract.methods.getOrg(i).call();
             let orgContract = new web3.eth.Contract(ORG_ABI, orgAddress);
@@ -407,6 +410,7 @@ async function loadOrgs() {
                 let holder = document.getElementById("left-nav");
                 let div = document.createElement("div");
                 div.classList.add("row");
+                div.style.top = "" + userTop + "px";
                 let span = document.createElement("span");
                 span.classList.add("row-title");
                 span.innerHTML = await orgContract.methods.name().call();
@@ -416,11 +420,14 @@ async function loadOrgs() {
                 div.appendChild(span);
                 div.appendChild(span2);
                 holder.appendChild(div);
+
+                userTop += 55;
             }
             if (admin) {
                 let holder = document.getElementById("right-nav");
                 let div = document.createElement("div");
                 div.classList.add("row");
+                div.style.top = "" + adminTop + "px";
                 let span = document.createElement("span");
                 span.classList.add("row-title");
                 span.innerHTML = await orgContract.methods.name().call();
@@ -430,6 +437,8 @@ async function loadOrgs() {
                 div.appendChild(span);
                 div.appendChild(span2);
                 holder.appendChild(div);
+
+                adminTop += 55;
             }
         }
     }
