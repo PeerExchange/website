@@ -372,10 +372,10 @@ const ORG_ABI = [
 ]
 
 window.onload = function() {
-    //getMetamask();
-    document.getElementById("left-nav").style.display = "none";
-    document.getElementById("user-nav").style.display = "block";
-    document.getElementById("right-nav").style.display = "none";
+    getMetamask();
+    //document.getElementById("left-nav").style.display = "none";
+    //document.getElementById("user-nav").style.display = "block";
+    //document.getElementById("right-nav").style.display = "none";
 }
 
 async function getMetamask() {
