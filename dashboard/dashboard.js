@@ -425,7 +425,7 @@ async function loadOrgs() {
                     document.getElementById("left-nav").style.display = "none";
                     document.getElementById("right-nav").style.display = "none";
                     document.getElementById("user-nav").style.display = "block";
-                    loadUser(orgContract);
+                    loadUser(orgAddress);
                 });
 
                 div.appendChild(span);
@@ -450,7 +450,7 @@ async function loadOrgs() {
                     document.getElementById("left-nav").style.display = "none";
                     document.getElementById("right-nav").style.display = "none";
                     document.getElementById("admin-nav").style.display = "block";
-                    loadAdmin(orgContract);
+                    loadAdmin(orgAddress);
                 });
 
                 div.appendChild(span);
