@@ -373,7 +373,6 @@ const ORG_ABI = [
 
 window.onload = function() {
     getMetamask();
-    loadOrgs();
 }
 
 async function getMetamask() {
@@ -383,10 +382,8 @@ async function getMetamask() {
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
             account = accounts[0];
             document.getElementById("account").innerHTML = account;
-        } catch(error) {
-            alert("An error occurred. Please install MetaMask to use");
-            window.location.href = "../index.html";
-        }
+            loadOrgs();
+        } catch(error) {}
 
     } else {
         alert("Please install MetaMask to use");
