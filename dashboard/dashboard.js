@@ -456,3 +456,14 @@ document.getElementById("all").addEventListener("click", function() {
     document.getElementById("right-nav").style.display = "none";
     document.getElementById("search-nav").style.display = "block";
 });
+
+let backs = document.getElementsByClassName("back");
+for (let i = 0; i < backs.length; i += 1) {
+    backs[i].addEventListener("click", function() {
+        document.getElementById("left-nav").style.display = "block";
+        document.getElementById("right-nav").style.display = "block";
+        document.getElementById("search-nav").style.display = "none";
+        document.getElementById("user-nav").style.display = "none";
+        document.getElementById("admin-nav").style.display = "none";
+    })
+}

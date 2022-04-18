@@ -131,3 +131,11 @@ body {
 .row-link:hover {
     cursor: pointer;
 }
+
+.back {
+    position: absolute;
+    color: rgb(2, 103, 255);
+    font-size: 16px;
+    bottom: 20px;
+    left: 20px;
+}
