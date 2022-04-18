@@ -391,14 +391,11 @@ async function getMetamask() {
 }
 
 async function loadOrgs() {
-    console.log("0");
     if (typeof window.ethereum !== 'undefined' && account != null) {
         let web3 = new Web3(window.ethereum);
-        console.log("1");
         let contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
-        console.log("2");
         let orgCount = await contract.methods.totalOrgs().call();
-        console.log("3");
+        console.log(orgCount);
 
         for (let i = 0; i < orgCount; i += 1) {
             let orgAddress = await contract.methods.getOrg(i).call();
