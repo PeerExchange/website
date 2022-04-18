@@ -372,7 +372,7 @@ const ORG_ABI = [
 ]
 
 window.onload = function() {
-    getMetamask();
+    //getMetamask();
 }
 
 async function getMetamask() {
@@ -395,7 +395,6 @@ async function loadOrgs() {
         let web3 = new Web3(window.ethereum);
         let contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
         let orgCount = await contract.methods.totalOrgs().call();
-        console.log(orgCount);
 
         for (let i = 0; i < orgCount; i += 1) {
             let orgAddress = await contract.methods.getOrg(i).call();
@@ -405,10 +404,32 @@ async function loadOrgs() {
             let admin = await orgContract.methods.isAdmin(account).call();
             
             if (userBalance > 0) {
-                console.log("member")
+                let holder = document.getElementById("left-nav");
+                let div = document.createElement("div");
+                div.classList.add("row");
+                let span = document.createElement("span");
+                span.classList.add("row-title");
+                span.innerHTML = await orgContract.methods.name().call();
+                let span2 = document.createElement("span");
+                span2.classList.add("row-link");
+                span2.innerHTML = "View More ->";
+                div.appendChild(span);
+                div.appendChild(span2);
+                holder.appendChild(div);
             }
             if (admin) {
-                console.log("admin")
+                let holder = document.getElementById("right-nav");
+                let div = document.createElement("div");
+                div.classList.add("row");
+                let span = document.createElement("span");
+                span.classList.add("row-title");
+                span.innerHTML = await orgContract.methods.name().call();
+                let span2 = document.createElement("span");
+                span2.classList.add("row-link");
+                span2.innerHTML = "Manage ->";
+                div.appendChild(span);
+                div.appendChild(span2);
+                holder.appendChild(div);
             }
         }
     }
