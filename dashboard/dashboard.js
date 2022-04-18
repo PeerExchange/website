@@ -417,6 +417,13 @@ async function loadOrgs() {
                 let span2 = document.createElement("span");
                 span2.classList.add("row-link");
                 span2.innerHTML = "View More ->";
+                
+                span2.addEventListener("click", function() {
+                    document.getElementById("left-nav").style.display = "none";
+                    document.getElementById("right-nav").style.display = "none";
+                    document.getElementById("user-nav").style.display = "block";
+                })
+
                 div.appendChild(span);
                 div.appendChild(span2);
                 holder.appendChild(div);
@@ -443,3 +450,9 @@ async function loadOrgs() {
         }
     }
 }
+
+document.getElementById("all").addEventListener("click", function() {
+    document.getElementById("left-nav").style.display = "none";
+    document.getElementById("right-nav").style.display = "none";
+    document.getElementById("search-nav").style.display = "block";
+});
