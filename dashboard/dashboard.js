@@ -372,10 +372,10 @@ const ORG_ABI = [
 ]
 
 window.onload = function() {
-    getMetamask();
-    //document.getElementById("left-nav").style.display = "none";
-    //document.getElementById("user-nav").style.display = "block";
-    //document.getElementById("right-nav").style.display = "none";
+    //getMetamask();
+    document.getElementById("left-nav").style.display = "none";
+    document.getElementById("user-nav").style.display = "block";
+    document.getElementById("right-nav").style.display = "none";
 }
 
 async function getMetamask() {
@@ -484,11 +484,11 @@ async function loadUser(con) {
     let web3 = new Web3(window.ethereum);
     let orgContract = new web3.eth.Contract(ORG_ABI, con);
 
-    let tokens = await orgContract.methods.balanceOf(con).call();
+    let tokens = await orgContract.methods.balanceOf(account).call();
     let decimals = await orgContract.methods.decimals().call();
     let symbol = await orgContract.methods.symbol().call();
-
     let parsedTokens = tokens / (10 ** decimals);
+    console.log(tokens);
 
     document.getElementById("holdings-wrapper").innerHTML =  "" + parsedTokens + " " + symbol;
     document.getElementById("oaddress").innerHTML = "Organization Contract Address: " + con;

@@ -26,6 +26,7 @@ body {
     position: absolute;
     left: 20%;
     top: 15px;
+    user-select: none;
 }
 
 #address {
@@ -126,6 +127,7 @@ body {
     color: rgb(2, 103, 255);
     right: 20px;
     top: 15px;
+    user-select: none;
 }
 
 .row-link:hover {
@@ -138,6 +140,7 @@ body {
     font-size: 16px;
     bottom: 20px;
     left: 20px;
+    user-select: none;
 }
 
 .back:hover {
@@ -180,4 +183,99 @@ body {
     font-size: 20px;
     top: 160px;
     left: 20px;
+}
+
+#events-wrapper {
+    width: 96%;
+    height: 125px;
+    border-radius: 8px;
+    position: absolute;
+    top: 190px;
+    left: 2%;
+    background-color: #F6F8FA;
+}
+
+.event {
+    position: absolute;
+    width: 96%;
+    left: 2%;
+    height: 40px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+#event1 {
+    top: 15px;
+}
+
+#event2 {
+    top: 65px;
+}
+
+.event-title {
+    position: absolute;
+    left: 40px;
+    top: 10px;
+}
+
+.event-link {
+    position: absolute;
+    right: 40px;
+    top: 10px;
+    color:rgb(2, 103, 255);
+    user-select: none;
+}
+
+.event-link:hover {
+    cursor: pointer;
+}
+
+.event-date {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+}
+
+#votes-title {
+    position: absolute;
+    color: rgba(0,0,0,0.8);
+    font-size: 20px;
+    top: 340px;
+    left: 20px;
+}
+
+.button {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 80px;
+    user-select: none;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+#website {
+    background-color: #3ece75;
+    left: 40px;
+}
+
+#history {
+    background-color: #65ffa0;
+    left: 280px;
+}
+
+#discord {
+    background-color: rgb(153, 132, 209);
+    left: 560px;
+    color: white;
+}
+
+#donate {
+    background-color: #a3ffc7;
+    right: 40px;
 }
