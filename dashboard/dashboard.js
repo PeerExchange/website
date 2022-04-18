@@ -372,7 +372,7 @@ const ORG_ABI = [
 ]
 
 window.onload = function() {
-    //getMetamask();
+    getMetamask();
 }
 
 async function getMetamask() {
