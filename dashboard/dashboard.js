@@ -377,7 +377,6 @@ window.onload = function() {
 
 async function getMetamask() {
     if (typeof window.ethereum !== 'undefined') {
-
         try {
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
             account = accounts[0];
@@ -392,15 +391,18 @@ async function getMetamask() {
 }
 
 async function loadOrgs() {
+    console.log("0");
     if (typeof window.ethereum !== 'undefined' && account != null) {
         let web3 = new Web3(window.ethereum);
+        console.log("1");
         let contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+        console.log("2");
         let orgCount = await contract.methods.totalOrgs().call();
-        console.log(orgCount);
+        console.log("3");
 
         for (let i = 0; i < orgCount; i += 1) {
             let orgAddress = await contract.methods.getOrg(i).call();
-            let orgContract = new web3.eth.Contract(CONTRACT_ABI, orgAddress);
+            let orgContract = new web3.eth.Contract(ORG_ABI, orgAddress);
 
             let userBalance = await orgContract.methods.balanceOf(account).call();
             let admin = await orgContract.methods.isAdmin(account).call();
