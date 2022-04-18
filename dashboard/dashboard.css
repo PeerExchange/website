@@ -139,3 +139,45 @@ body {
     bottom: 20px;
     left: 20px;
 }
+
+.back:hover {
+    cursor: pointer;
+}
+
+#oaddress {
+    position: absolute;
+    color: rgba(0,0,0,0.8);
+    font-size: 16px;
+    bottom: 20px;
+    right: 20px;
+}
+
+#holdings-title {
+    position: absolute;
+    color: rgba(0,0,0,0.8);
+    font-size: 20px;
+    top: 20px;
+    left: 20px;
+}
+
+#holdings-wrapper {
+    width: 96%;
+    height: 60px;
+    border-radius: 8px;
+    position: absolute;
+    top: 50px;
+    left: 2%;
+    background-color: #F6F8FA;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+#events-title {
+    position: absolute;
+    color: rgba(0,0,0,0.8);
+    font-size: 20px;
+    top: 160px;
+    left: 20px;
+}

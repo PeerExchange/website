@@ -372,7 +372,10 @@ const ORG_ABI = [
 ]
 
 window.onload = function() {
-    getMetamask();
+    //getMetamask();
+    document.getElementById("left-nav").style.display = "none";
+    document.getElementById("user-nav").style.display = "block";
+    document.getElementById("right-nav").style.display = "none";
 }
 
 async function getMetamask() {
@@ -422,7 +425,8 @@ async function loadOrgs() {
                     document.getElementById("left-nav").style.display = "none";
                     document.getElementById("right-nav").style.display = "none";
                     document.getElementById("user-nav").style.display = "block";
-                })
+                    loadUser(orgContract);
+                });
 
                 div.appendChild(span);
                 div.appendChild(span2);
@@ -441,6 +445,14 @@ async function loadOrgs() {
                 let span2 = document.createElement("span");
                 span2.classList.add("row-link");
                 span2.innerHTML = "Manage ->";
+
+                span2.addEventListener("click", function() {
+                    document.getElementById("left-nav").style.display = "none";
+                    document.getElementById("right-nav").style.display = "none";
+                    document.getElementById("admin-nav").style.display = "block";
+                    loadAdmin(orgContract);
+                });
+
                 div.appendChild(span);
                 div.appendChild(span2);
                 holder.appendChild(div);
@@ -466,4 +478,22 @@ for (let i = 0; i < backs.length; i += 1) {
         document.getElementById("user-nav").style.display = "none";
         document.getElementById("admin-nav").style.display = "none";
     })
+}
+
+async function loadUser(con) {
+    let web3 = new Web3(window.ethereum);
+    let orgContract = new web3.eth.Contract(ORG_ABI, con);
+
+    let tokens = await orgContract.methods.balanceOf(con).call();
+    let decimals = await orgContract.methods.decimals().call();
+    let symbol = await orgContract.methods.symbol().call();
+
+    let parsedTokens = tokens / (10 ** decimals);
+
+    document.getElementById("holdings-wrapper").innerHTML =  "" + parsedTokens + " " + symbol;
+    document.getElementById("oaddress").innerHTML = "Organization Contract Address: " + con;
+}
+
+async function loadAdmin(con) {
+
 }
