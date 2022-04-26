@@ -433,7 +433,9 @@ async function loadOrgs() {
                 div.style.top = "" + userTop + "px";
                 let span = document.createElement("span");
                 span.classList.add("row-title");
-                span.innerHTML = await orgContract.methods.name().call();
+                let name = await orgContract.methods.name().call();
+				name += " (" + await orgContract.methods.symbol().call() + ")";
+				span.innerHTML = name;
                 let span2 = document.createElement("span");
                 span2.classList.add("row-link");
                 span2.innerHTML = "View More ->";
@@ -451,14 +453,16 @@ async function loadOrgs() {
 
                 userTop += 55;
             }
-			
+
 			let holder = document.getElementById("right-nav");
 			let div = document.createElement("div");
 			div.classList.add("row");
 			div.style.top = "" + adminTop + "px";
 			let span = document.createElement("span");
 			span.classList.add("row-title");
-			span.innerHTML = await orgContract.methods.name().call();
+			let name = await orgContract.methods.name().call();
+			name += " (" + await orgContract.methods.symbol().call() + ")";
+			span.innerHTML = name;
 			let span2 = document.createElement("span");
 			span2.classList.add("row-link");
 			span2.innerHTML = "Manage ->";
@@ -483,6 +487,32 @@ document.getElementById("all").addEventListener("click", function() {
     document.getElementById("left-nav").style.display = "none";
     document.getElementById("right-nav").style.display = "none";
     document.getElementById("search-nav").style.display = "block";
+
+	let web3 = new Web3(window.ethereum);
+	let contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+	let orgCount = await contract.methods.totalOrgs().call();
+
+	let userTop = 60;
+
+	for (let i = 0; i < orgCount; i += 1) {
+		let orgAddress = await contract.methods.getOrg(i).call();
+		let orgContract = new web3.eth.Contract(ORG_ABI, orgAddress);
+		
+		let holder = document.getElementById("left-nav");
+		let div = document.createElement("div");
+		div.classList.add("row");
+		div.style.top = "" + userTop + "px";
+		let span = document.createElement("span");
+		span.classList.add("row-title");
+		let name = await orgContract.methods.name().call();
+		name += " (" + await orgContract.methods.symbol().call() + ")";
+		span.innerHTML = name;
+
+		div.appendChild(span);
+		holder.appendChild(div);
+
+		userTop += 55;
+	}
 });
 
 let backs = document.getElementsByClassName("back");
