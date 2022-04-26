@@ -488,6 +488,10 @@ document.getElementById("all").addEventListener("click", function() {
     document.getElementById("right-nav").style.display = "none";
     document.getElementById("search-nav").style.display = "block";
 
+	loadAll();
+});
+
+async function loadAll() {
 	let web3 = new Web3(window.ethereum);
 	let contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 	let orgCount = await contract.methods.totalOrgs().call();
@@ -513,7 +517,7 @@ document.getElementById("all").addEventListener("click", function() {
 
 		userTop += 55;
 	}
-});
+}
 
 let backs = document.getElementsByClassName("back");
 for (let i = 0; i < backs.length; i += 1) {
