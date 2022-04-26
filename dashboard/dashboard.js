@@ -1,19 +1,6 @@
 var account;
-const CONTRACT_ADDRESS = "0xd2717316E2bddfF1dA3d73b3488EfC8525cBc3D0";
+const CONTRACT_ADDRESS = "0xc7f263999ce1fa1e74bc11Fe006792810F5F319e";
 const CONTRACT_ABI = [
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "orgAddress",
-				"type": "address"
-			}
-		],
-		"name": "newOrg",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -39,6 +26,19 @@ const CONTRACT_ABI = [
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "orgAddress",
+				"type": "address"
+			}
+		],
+		"name": "newOrg",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "totalOrgs",
 		"outputs": [
@@ -51,46 +51,8 @@ const CONTRACT_ABI = [
 		"stateMutability": "view",
 		"type": "function"
 	}
-]
+];
 const ORG_ABI = [
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "time",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "user",
-				"type": "address"
-			}
-		],
-		"name": "NewUser",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "string",
-				"name": "message",
-				"type": "string"
-			}
-		],
-		"name": "Withdraw",
-		"type": "event"
-	},
 	{
 		"inputs": [
 			{
@@ -135,6 +97,19 @@ const ORG_ABI = [
 	{
 		"inputs": [
 			{
+				"internalType": "uint256",
+				"name": "id_",
+				"type": "uint256"
+			}
+		],
+		"name": "endVote",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "string",
 				"name": "option1_",
 				"type": "string"
@@ -149,6 +124,51 @@ const ORG_ABI = [
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "name_",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "symbol_",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "owner_",
+				"type": "address"
+			},
+			{
+				"internalType": "bool",
+				"name": "transferrable_",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "time",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			}
+		],
+		"name": "NewUser",
+		"type": "event"
 	},
 	{
 		"inputs": [
@@ -200,30 +220,23 @@ const ORG_ABI = [
 		"type": "function"
 	},
 	{
+		"anonymous": false,
 		"inputs": [
 			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
 				"internalType": "string",
-				"name": "name_",
+				"name": "message",
 				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "symbol_",
-				"type": "string"
-			},
-			{
-				"internalType": "address",
-				"name": "owner_",
-				"type": "address"
-			},
-			{
-				"internalType": "bool",
-				"name": "transferrable_",
-				"type": "bool"
 			}
 		],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
+		"name": "Withdraw",
+		"type": "event"
 	},
 	{
 		"inputs": [
@@ -239,19 +252,6 @@ const ORG_ABI = [
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "decimals",
-		"outputs": [
-			{
-				"internalType": "uint8",
-				"name": "",
-				"type": "uint8"
 			}
 		],
 		"stateMutability": "view",
@@ -301,11 +301,29 @@ const ORG_ABI = [
 						"internalType": "uint256",
 						"name": "option2Count",
 						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "over",
+						"type": "bool"
 					}
 				],
 				"internalType": "struct PeerOrg.Vote",
 				"name": "",
 				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getVoteId",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -369,7 +387,7 @@ const ORG_ABI = [
 		"stateMutability": "view",
 		"type": "function"
 	}
-]
+];
 
 window.onload = function() {
     getMetamask();
@@ -407,7 +425,6 @@ async function loadOrgs() {
             let orgContract = new web3.eth.Contract(ORG_ABI, orgAddress);
 
             let userBalance = await orgContract.methods.balanceOf(account).call();
-            let admin = await orgContract.methods.isAdmin(account).call();
             
             if (userBalance > 0) {
                 let holder = document.getElementById("left-nav");
@@ -434,31 +451,30 @@ async function loadOrgs() {
 
                 userTop += 55;
             }
-            if (admin) {
-                let holder = document.getElementById("right-nav");
-                let div = document.createElement("div");
-                div.classList.add("row");
-                div.style.top = "" + adminTop + "px";
-                let span = document.createElement("span");
-                span.classList.add("row-title");
-                span.innerHTML = await orgContract.methods.name().call();
-                let span2 = document.createElement("span");
-                span2.classList.add("row-link");
-                span2.innerHTML = "Manage ->";
+			
+			let holder = document.getElementById("right-nav");
+			let div = document.createElement("div");
+			div.classList.add("row");
+			div.style.top = "" + adminTop + "px";
+			let span = document.createElement("span");
+			span.classList.add("row-title");
+			span.innerHTML = await orgContract.methods.name().call();
+			let span2 = document.createElement("span");
+			span2.classList.add("row-link");
+			span2.innerHTML = "Manage ->";
 
-                span2.addEventListener("click", function() {
-                    document.getElementById("left-nav").style.display = "none";
-                    document.getElementById("right-nav").style.display = "none";
-                    document.getElementById("admin-nav").style.display = "block";
-                    loadAdmin(orgAddress);
-                });
+			span2.addEventListener("click", function() {
+				document.getElementById("left-nav").style.display = "none";
+				document.getElementById("right-nav").style.display = "none";
+				document.getElementById("admin-nav").style.display = "block";
+				loadAdmin(orgAddress);
+			});
 
-                div.appendChild(span);
-                div.appendChild(span2);
-                holder.appendChild(div);
+			div.appendChild(span);
+			div.appendChild(span2);
+			holder.appendChild(div);
 
-                adminTop += 55;
-            }
+			adminTop += 55;
         }
     }
 }
@@ -488,10 +504,11 @@ async function loadUser(con) {
     let decimals = await orgContract.methods.decimals().call();
     let symbol = await orgContract.methods.symbol().call();
     let parsedTokens = tokens / (10 ** decimals);
-    console.log(tokens);
 
     document.getElementById("holdings-wrapper").innerHTML =  "" + parsedTokens + " " + symbol;
     document.getElementById("oaddress").innerHTML = "Organization Contract Address: " + con;
+
+    let voteCount = await orgContract.methods.getVote(0).call();
 }
 
 async function loadAdmin(con) {

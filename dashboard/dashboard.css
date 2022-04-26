@@ -91,19 +91,6 @@ body {
     cursor: pointer;
 }
 
-#new {
-    color: rgb(2, 103, 255);
-    font-size: 18px;
-    position: absolute;
-    right: 30px;
-    bottom: 30px;
-    user-select: none;
-}
-
-#new:hover {
-    cursor: not-allowed;
-}
-
 .row {
     background-color: #F6F8FA;
     border-radius: 8px;
