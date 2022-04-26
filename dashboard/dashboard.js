@@ -573,4 +573,12 @@ async function loadAdmin(con) {
 
 async function donate(address, amount) {
 	console.log(address + " - " + amount);
+	let web3 = new Web3(window.ethereum);
+    let orgContract = new web3.eth.Contract(ORG_ABI, address);
+	let weiAmount = amount * 10**18;
+
+	await orgContract.methods.userMint().send({from: account, value: weiAmount})
+	.on('confirmation', function (confirmationNumber, receipt) {
+		window.location.reload();
+	});
 }
