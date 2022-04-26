@@ -266,3 +266,53 @@ body {
     background-color: #a3ffc7;
     right: 40px;
 }
+
+.row-input {
+    position: absolute;
+    right: 180px;
+    top: 18px;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: transparent;
+    color: black;
+    opacity: 50%;
+    outline: none;
+    transition: all 0.4s;
+    text-align: center;
+    font-size: 16px;
+    width: 140px;
+}
+
+.row-input:hover {
+    opacity: 100%;
+}
+
+.row-button {
+    position: absolute;
+    right: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 16px;
+    background-color: #3ece75;
+    opacity: 75%;
+    transition: all 0.4s;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    top: 8px;
+    border-radius: 8px;
+    user-select: none;
+    color: white;
+}
+
+.row-button:hover {
+    cursor: pointer;
+    opacity: 100%;
+}
+
+.row-description {
+    position: absolute;
+    font-size: 16px;
+    color: rgba(0,0,0,0.8);
+    left: 260px;
+    top: 15px;
+}

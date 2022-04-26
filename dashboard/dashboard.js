@@ -513,7 +513,28 @@ async function loadAll() {
 		name += " (" + await orgContract.methods.symbol().call() + ")";
 		span.innerHTML = name;
 
+		let description = document.createElement("span");
+		description.classList.add("row-description");
+		description.innerHTML = "Description";
+
+		let input = document.createElement("input");
+		input.setAttribute("placeholder", "Amount (ETH)");
+		input.setAttribute("type", "text");
+		input.classList.add("row-input");
+		input.setAttribute("id", orgAddress + "-input");
+
+		let button = document.createElement("div");
+		button.classList.add("row-button");
+		button.innerHTML = "Donate / Join";
+
+		button.addEventListener("click", function() {
+			donate(orgAddress, document.getElementById(orgAddress + "-input").value);
+		});
+
 		div.appendChild(span);
+		div.appendChild(description);
+		div.appendChild(input);
+		div.appendChild(button);
 		holder.appendChild(div);
 
 		userTop += 55;
@@ -548,4 +569,8 @@ async function loadUser(con) {
 
 async function loadAdmin(con) {
 
+}
+
+async function donate(address, amount) {
+	console.log(address + " - " + amount);
 }
