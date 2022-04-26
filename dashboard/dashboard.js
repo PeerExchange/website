@@ -394,6 +394,7 @@ window.onload = function() {
     //document.getElementById("left-nav").style.display = "none";
     //document.getElementById("user-nav").style.display = "block";
     //document.getElementById("right-nav").style.display = "none";
+	//document.getElementById("search-nav").style.display = "block";
 }
 
 async function getMetamask() {
@@ -502,7 +503,7 @@ async function loadAll() {
 		let orgAddress = await contract.methods.getOrg(i).call();
 		let orgContract = new web3.eth.Contract(ORG_ABI, orgAddress);
 		
-		let holder = document.getElementById("left-nav");
+		let holder = document.getElementById("search-nav");
 		let div = document.createElement("div");
 		div.classList.add("row");
 		div.style.top = "" + userTop + "px";
