@@ -316,3 +316,11 @@ body {
     left: 260px;
     top: 15px;
 }
+
+#browse-title {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    font-size: 24px;
+    font-weight: bold;
+}

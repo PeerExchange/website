@@ -497,7 +497,7 @@ async function loadAll() {
 	let contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 	let orgCount = await contract.methods.totalOrgs().call();
 
-	let userTop = 60;
+	let userTop = 120;
 
 	for (let i = 0; i < orgCount; i += 1) {
 		let orgAddress = await contract.methods.getOrg(i).call();
