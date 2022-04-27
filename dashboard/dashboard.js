@@ -558,11 +558,12 @@ async function loadUser(con) {
 
     let tokens = await orgContract.methods.balanceOf(account).call();
     let symbol = await orgContract.methods.symbol().call();
+	let realToken = tokens / (10 ** 18);
 
-    document.getElementById("holdings-wrapper").innerHTML =  "" + tokens + " " + symbol;
+    document.getElementById("holdings-wrapper").innerHTML =  "" + realToken + " " + symbol;
     document.getElementById("oaddress").innerHTML = "Organization Contract Address: " + con;
 
-    let voteCount = await orgContract.methods.getVote(0).call();
+    let voteCount = await orgContract.methods.getVoteId().call();
 }
 
 async function loadAdmin(con) {
