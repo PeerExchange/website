@@ -626,7 +626,7 @@ async function loadUser(con) {
 		let output = "";
 		for (let i = 0; i < events.length; i += 1) {
 			let returnValues = events[i].returnValues;
-			let amount = returnsValues[0] / (10 ** 18);
+			let amount = returnValues[0] / (10 ** 18);
 			let message = returnValues[1];
 			output += message + " - " + amount + "\n";
 		}
