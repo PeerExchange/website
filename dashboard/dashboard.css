@@ -142,6 +142,14 @@ body {
     right: 20px;
 }
 
+#aaddress {
+    position: absolute;
+    color: rgba(0,0,0,0.8);
+    font-size: 16px;
+    bottom: 20px;
+    right: 20px;
+}
+
 #holdings-title {
     position: absolute;
     color: rgba(0,0,0,0.8);
@@ -317,4 +325,29 @@ body {
     left: 30px;
     top: 30px;
     font-size: 24px;
+}
+
+.stat {
+    position: absolute;
+    border-radius: 8px;
+    background-color: #F6F8FA;
+    height: 200px;
+    width: 22%;
+    top: 30px;
+}
+
+#user-count {
+    left: 3%;
+}
+
+#bank-balance {
+    left: 27%;
+}
+
+#token-supply {
+    left: 51%;
+}
+
+#recurring-donations {
+    left: 75%;
 }

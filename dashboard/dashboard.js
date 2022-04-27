@@ -1,6 +1,19 @@
 var account;
-const CONTRACT_ADDRESS = "0xc7f263999ce1fa1e74bc11Fe006792810F5F319e";
+const CONTRACT_ADDRESS = "0xD6431419BD417Af692E38d2E8a3bD9a4c201B55B";
 const CONTRACT_ABI = [
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "orgAddress",
+				"type": "address"
+			}
+		],
+		"name": "newOrg",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -26,19 +39,6 @@ const CONTRACT_ABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "orgAddress",
-				"type": "address"
-			}
-		],
-		"name": "newOrg",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"inputs": [],
 		"name": "totalOrgs",
 		"outputs": [
@@ -53,78 +53,6 @@ const CONTRACT_ABI = [
 	}
 ];
 const ORG_ABI = [
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "adminMint",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "message",
-				"type": "string"
-			}
-		],
-		"name": "adminWithdraw",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "id_",
-				"type": "uint256"
-			}
-		],
-		"name": "endVote",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "option1_",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "option2_",
-				"type": "string"
-			}
-		],
-		"name": "newVote",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
 	{
 		"inputs": [
 			{
@@ -171,53 +99,23 @@ const ORG_ABI = [
 		"type": "event"
 	},
 	{
+		"anonymous": false,
 		"inputs": [
 			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "time",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
 				"internalType": "address",
-				"name": "to",
+				"name": "user",
 				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
 			}
 		],
-		"name": "transfer",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "userMint",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "id_",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bool",
-				"name": "option_",
-				"type": "bool"
-			}
-		],
-		"name": "vote",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
+		"name": "RecurringDonation",
+		"type": "event"
 	},
 	{
 		"anonymous": false,
@@ -244,6 +142,47 @@ const ORG_ABI = [
 				"internalType": "address",
 				"name": "account",
 				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "adminMint",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "message",
+				"type": "string"
+			}
+		],
+		"name": "adminWithdraw",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
 			}
 		],
 		"name": "balanceOf",
@@ -255,6 +194,19 @@ const ORG_ABI = [
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id_",
+				"type": "uint256"
+			}
+		],
+		"name": "endVote",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -362,6 +314,24 @@ const ORG_ABI = [
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "option1_",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "option2_",
+				"type": "string"
+			}
+		],
+		"name": "newVote",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "symbol",
 		"outputs": [
@@ -386,15 +356,65 @@ const ORG_ABI = [
 		],
 		"stateMutability": "view",
 		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "transfer",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "userMint",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id_",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "option_",
+				"type": "bool"
+			}
+		],
+		"name": "vote",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	}
 ];
 
 window.onload = function() {
-    getMetamask();
-    //document.getElementById("left-nav").style.display = "none";
+    //getMetamask();
+    document.getElementById("left-nav").style.display = "none";
     //document.getElementById("user-nav").style.display = "block";
-    //document.getElementById("right-nav").style.display = "none";
+    document.getElementById("right-nav").style.display = "none";
 	//document.getElementById("search-nav").style.display = "block";
+	document.getElementById("admin-nav").style.display = "block";
 }
 
 async function getMetamask() {
@@ -567,7 +587,10 @@ async function loadUser(con) {
 }
 
 async function loadAdmin(con) {
+	let web3 = new Web3(window.ethereum);
+    let orgContract = new web3.eth.Contract(ORG_ABI, con);
 
+	document.getElementById("oaddress").innerHTML = "Organization Contract Address: " + con;
 }
 
 async function donate(address, amount) {
