@@ -606,7 +606,7 @@ async function loadAdmin(con) {
 	let wrapper = document.getElementById("votesa");
 	let topV = 5;
 	for (let i = 0; i < voteCount; i += 1) {
-		await orgContract.methods.getVote(i)
+		await orgContract.methods.getVote(i).call()
 		.then((result) => function() {
 			let newVote = document.createElement("div");
 			newVote.classList.add("vote-row");
@@ -617,7 +617,7 @@ async function loadAdmin(con) {
 			newVote.appendChild(span);
 			wrapper.appendChild(newVote);
 			topV += 45;
-		});	
+		});
 	}
 }
 
