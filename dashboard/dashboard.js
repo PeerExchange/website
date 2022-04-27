@@ -623,6 +623,14 @@ async function loadUser(con) {
 	await orgContract.getPastEvents("Withdraw", {fromBlock: 0})
 	.then(events => {
 		console.log(events);
+		let output = "";
+		for (let i = 0; i < events.length; i += 1) {
+			let returnValues = events[i].returnValues;
+			let amount = returnsValues[0] / (10 ** 18);
+			let message = returnValues[1];
+			output += message + " - " + amount + "\n";
+		}
+		document.getElementById("withdrawals-div").innerHTML = output;
 	});
 }
 
