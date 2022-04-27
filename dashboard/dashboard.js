@@ -645,7 +645,7 @@ async function vote(orgContract) {
 
 async function withdraw(orgContract) {
 	await orgContract.methods.adminWithdraw(document.getElementById("withdraw-address").value,
-		document.getElementById("withdraw-address").value * (10 ** 18),
+		document.getElementById("withdraw-amount").value * (10 ** 18),
 		document.getElementById("withdraw-reason").value).send({from: account})
 		.on('confirmation', function (confirmationNumber, receipt) {
 			window.location.reload();
