@@ -557,11 +557,9 @@ async function loadUser(con) {
     let orgContract = new web3.eth.Contract(ORG_ABI, con);
 
     let tokens = await orgContract.methods.balanceOf(account).call();
-    let decimals = await orgContract.methods.decimals().call();
     let symbol = await orgContract.methods.symbol().call();
-    let parsedTokens = tokens / (10 ** decimals);
 
-    document.getElementById("holdings-wrapper").innerHTML =  "" + parsedTokens + " " + symbol;
+    document.getElementById("holdings-wrapper").innerHTML =  "" + tokens + " " + symbol;
     document.getElementById("oaddress").innerHTML = "Organization Contract Address: " + con;
 
     let voteCount = await orgContract.methods.getVote(0).call();
