@@ -270,7 +270,7 @@ body {
     right: 40px;
 }
 
-.row-input {
+input {
     position: absolute;
     right: 180px;
     top: 18px;
@@ -286,7 +286,7 @@ body {
     width: 140px;
 }
 
-.row-input:hover {
+input:hover {
     opacity: 100%;
 }
 
@@ -382,4 +382,66 @@ body {
 
 #recurring-stat {
     left: 100px;
+}
+
+#votesa {
+    position: absolute;
+    background-color: #F6F8FA;
+    position: absolute;
+    left: 3%;
+    top: 300px;
+    height: 380px;
+    width: 47%;
+    border-radius: 8px;
+}
+
+#votesa-title {
+    position: absolute;
+    left: 4%;
+    color: black;
+    font-size: 16px;
+    top: 275px;
+}
+
+#votesa-1 {
+    right: 75%;
+    top: 275px;
+    width: 100px;
+}
+
+#votesa-2 {
+    right: 65%;
+    top: 275px;
+    width: 100px;
+}
+
+#create-vote {
+    position: absolute;
+    right: 50%;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 16px;
+    background-color: #3ece75;
+    opacity: 75%;
+    transition: all 0.4s;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    top: 265px;
+    border-radius: 8px;
+    user-select: none;
+    color: white;
+}
+
+#create-vote:hover {
+    cursor: pointer;
+    opacity: 100%;
+}
+
+.vote-row {
+    position: absolute;
+    left: 1%;
+    width: 98%;
+    background-color: white;
+    border-radius: 8px;
+    height: 40px;
 }

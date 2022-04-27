@@ -593,10 +593,25 @@ async function loadAdmin(con) {
 	document.getElementById("aaddress").innerHTML = "Organization Contract Address: " + con;
 	await orgContract.getPastEvents("NewUser", {fromBlock: 0})
 	.then((events) => document.getElementById("user-stat").innerHTML = events.length);
-	document.getElementById("bank-stat").innerHTML = await web3.eth.getBalance(con);
-	document.getElementById("token-stat").innerHTML = await orgContract.methods.totalSupply().call();
+	document.getElementById("bank-stat").innerHTML = await web3.eth.getBalance(con) / (10 ** 18);
+	document.getElementById("token-stat").innerHTML = await orgContract.methods.totalSupply().call() / (10 ** 18);
 	await orgContract.getPastEvents("RecurringDonation", {fromBlock: 0})
 	.then((events) => document.getElementById("recurring-stat").innerHTML = events.length);
+
+	document.getElementById("create-vote").addEventListener("click", function() {
+		vote(orgContract);
+	});
+
+	let voteCount = await orgContract.methods.getVoteId().call();
+	let wrapper = document.getElementById("votesa");
+	let topV = 5;
+	for (let i = 0; i < voteCount; i += 1) {
+		let newVote = document.createElement("div");
+		newVote.classList.add("vote-row");
+		newVote.style.top = "" + topV + "px";
+		wrapper.appendChild(newVote);
+		topV += 45;
+	}
 }
 
 async function donate(address, amount) {
@@ -606,6 +621,13 @@ async function donate(address, amount) {
 	let weiAmount = amount * 10**18;
 
 	await orgContract.methods.userMint().send({from: account, value: weiAmount})
+	.on('confirmation', function (confirmationNumber, receipt) {
+		window.location.reload();
+	});
+}
+
+async function vote(orgContract) {
+	await orgContract.methods.newVote(document.getElementById("votesa-1").value, document.getElementById("votesa-2").value).send({from: account})
 	.on('confirmation', function (confirmationNumber, receipt) {
 		window.location.reload();
 	});
