@@ -606,18 +606,17 @@ async function loadAdmin(con) {
 	let wrapper = document.getElementById("votesa");
 	let topV = 5;
 	for (let i = 0; i < voteCount; i += 1) {
-		await orgContract.methods.getVote(i).call()
-		.then((result) => function() {
-			let newVote = document.createElement("div");
-			newVote.classList.add("vote-row");
-			newVote.style.top = "" + topV + "px";
-			let span = document.createElement("span");
-			span.innerHTML = result[0] + ": " + result[2] + ", " + result[1] + ": " + result[3];
-			span.classList.add("vote-details");
-			newVote.appendChild(span);
-			wrapper.appendChild(newVote);
-			topV += 45;
-		});
+		let vote = await orgContract.methods.getVote(i).call();
+		console.log(vote);
+		let newVote = document.createElement("div");
+		newVote.classList.add("vote-row");
+		newVote.style.top = "" + topV + "px";
+		let span = document.createElement("span");
+		span.innerHTML = vote[0] + ": " + vote[2] + ", " + vote[1] + ": " + vote[3];
+		span.classList.add("vote-details");
+		newVote.appendChild(span);
+		wrapper.appendChild(newVote);
+		topV += 45;
 	}
 }
 
