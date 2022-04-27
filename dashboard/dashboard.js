@@ -602,15 +602,30 @@ async function loadUser(con) {
 		div1.classList.add("option1");
 		div1.innerHTML = vote[0];
 
+		div1.addEventListener("click", function() {
+			voteFor(orgContract, i, true);
+		});
+
 		let div2 = document.createElement("div");
 		div2.classList.add("option2");
 		div2.innerHTML = vote[1];
+
+		div2.addEventListener("click", function() {
+			voteFor(orgContract, i, false);
+		});
 
 		newVote.appendChild(div1);
 		newVote.appendChild(div2);
 		wrapper.appendChild(newVote);
 		topV += 45;
 	}
+}
+
+async function voteFor(orgContract, index, option) {
+	await orgContract.methods.vote(index, option).send({from: account})
+	.on('confirmation', function (confirmationNumber, receipt) {
+		window.location.reload();
+	});
 }
 
 async function loadAdmin(con) {
