@@ -621,7 +621,7 @@ async function loadUser(con) {
 	}
 
 	await orgContract.getPastEvents("Withdraw", {fromBlock: 0})
-	.then((events) => function() {
+	.then(events => {
 		console.log(events);
 	});
 }
