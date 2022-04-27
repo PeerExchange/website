@@ -619,6 +619,11 @@ async function loadUser(con) {
 		wrapper.appendChild(newVote);
 		topV += 45;
 	}
+
+	await orgContract.getPastEvents("Withdraw", {fromBlock: 0})
+	.then((events) => function() {
+		console.log(events);
+	});
 }
 
 async function voteFor(orgContract, index, option) {
@@ -654,7 +659,10 @@ async function loadAdmin(con) {
 		newVote.classList.add("vote-row");
 		newVote.style.top = "" + topV + "px";
 		let span = document.createElement("span");
-		span.innerHTML = vote[0] + ": " + vote[2] + ", " + vote[1] + ": " + vote[3];
+		let vote1 = vote[2] / (10 ** 18);
+		let vote2 = vote[3] / (10 ** 18);
+
+		span.innerHTML = vote[0] + ": " + vote1 + ", " + vote[1] + ": " + vote2;
 		span.classList.add("vote-details");
 		newVote.appendChild(span);
 		wrapper.appendChild(newVote);

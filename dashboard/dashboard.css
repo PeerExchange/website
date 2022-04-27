@@ -239,6 +239,25 @@ body {
     left: 20px;
 }
 
+#withdrawals-div {
+    left: calc(50% + 10px);
+    position: absolute;
+    top: 380px;
+    height: 160px;
+    width: calc(47% - 40px);
+    background-color: #F6F8FA;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+#funds-title {
+    position: absolute;
+    color: rgba(0,0,0,0.8);
+    font-size: 20px;
+    top: 340px;
+    left: calc(50% + 10px);
+}
+
 .button {
     padding-top: 10px;
     padding-bottom: 10px;
