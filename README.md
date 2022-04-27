@@ -1,8 +1,6 @@
 # website
 https://peerexchange.info/
 
-Dashboard code in Dashboard folder
-
 To use:
 - Connect MetaMask to Rinkeby network
 - Visit https://peerexchange.info/
@@ -13,3 +11,7 @@ To use:
 - After the transaction, you will be a user of the new organization
 - You can be both an admin and a user of an organization, so you can test out all functionalities
 - After confirming a transaction with MetaMask, nothing will happen until the transaction is confirmed on the blockchain, and you will then see the changes
+- Smart contract code is located at https://github.com/PeerExchange/contract
+- Dashboard code is located in dashboard folder of website
+
+VIDEO DEMO: https://drive.google.com/file/d/1HO77hP2HNmEIjlUe_bS020-8bXJui7vi/view?usp=sharing
