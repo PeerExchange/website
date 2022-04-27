@@ -351,3 +351,35 @@ body {
 #recurring-donations {
     left: 75%;
 }
+
+.stat-title {
+    color: black;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 16px;
+}
+
+.stat-stat {
+    position: absolute;
+    color: black;
+    font-weight: bold;
+    top: 60px;
+    font-size: 64px;
+}
+
+#user-stat {
+    left: 100px;
+}
+
+#bank-stat {
+    left: 60px;
+}
+
+#token-stat {
+    left: 100px;
+}
+
+#recurring-stat {
+    left: 100px;
+}

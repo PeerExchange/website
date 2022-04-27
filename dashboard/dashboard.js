@@ -590,7 +590,9 @@ async function loadAdmin(con) {
 	let web3 = new Web3(window.ethereum);
     let orgContract = new web3.eth.Contract(ORG_ABI, con);
 
-	document.getElementById("oaddress").innerHTML = "Organization Contract Address: " + con;
+	document.getElementById("aaddress").innerHTML = "Organization Contract Address: " + con;
+	await orgContract.getPastEvents("NewUser", {fromBlock: 0})
+	.then((events) => document.getElementById("user-stat").innerHTML = events.length);
 }
 
 async function donate(address, amount) {
