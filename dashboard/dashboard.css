@@ -451,3 +451,37 @@ input:hover {
     top: 10px;
     left: 10px;
 }
+
+#withdraw-title {
+    position: absolute;
+    left: 53%;
+    top: 275px;
+    color: black;
+    font-size: 16px;
+}
+
+#withdraw-reason {
+    left: 53%;
+    width: 40%;
+    top: 310px;
+    text-align: left;
+}
+
+#withdraw-address {
+    left: 53%;
+    width: 40%;
+    top: 350px;
+    text-align: left;
+}
+
+#withdraw-amount {
+    left: 53%;
+    width: 27%;
+    top: 390px;
+    text-align: left;
+}
+
+#withdraw-button {
+    right: 7%;
+    top: 380px;
+}

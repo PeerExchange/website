@@ -410,11 +410,11 @@ const ORG_ABI = [
 
 window.onload = function() {
     getMetamask();
-    //document.getElementById("left-nav").style.display = "none";
-    //document.getElementById("user-nav").style.display = "block";
-    //document.getElementById("right-nav").style.display = "none";
-	//document.getElementById("search-nav").style.display = "block";
-	//document.getElementById("admin-nav").style.display = "block";
+    document.getElementById("left-nav").style.display = "none";
+    document.getElementById("user-nav").style.display = "block";
+    document.getElementById("right-nav").style.display = "none";
+	document.getElementById("search-nav").style.display = "block";
+	document.getElementById("admin-nav").style.display = "block";
 }
 
 async function getMetamask() {
@@ -618,6 +618,10 @@ async function loadAdmin(con) {
 		wrapper.appendChild(newVote);
 		topV += 45;
 	}
+
+	document.getElementById("withdraw-button").addEventListener("click", function() {
+		withdraw(orgContract);
+	});
 }
 
 async function donate(address, amount) {
@@ -637,4 +641,13 @@ async function vote(orgContract) {
 	.on('confirmation', function (confirmationNumber, receipt) {
 		window.location.reload();
 	});
+}
+
+async function withdraw(orgContract) {
+	await orgContract.methods.adminWithdraw(document.getElementById("withdraw-address").value,
+		document.getElementById("withdraw-address").value * (10 ** 18),
+		document.getElementById("withdraw-reason").value).send({from: account})
+		.on('confirmation', function (confirmationNumber, receipt) {
+			window.location.reload();
+		});
 }
