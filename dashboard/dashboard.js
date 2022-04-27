@@ -590,6 +590,21 @@ async function loadUser(con) {
     document.getElementById("oaddress").innerHTML = "Organization Contract Address: " + con;
 
     let voteCount = await orgContract.methods.getVoteId().call();
+	let wrapper = document.getElementById("votesu");
+	let topV = 5;
+	for (let i = 0; i < voteCount; i += 1) {
+		let vote = await orgContract.methods.getVote(i).call();
+		console.log(vote);
+		let newVote = document.createElement("div");
+		newVote.classList.add("vote-row");
+		newVote.style.top = "" + topV + "px";
+		let span = document.createElement("span");
+		span.innerHTML = vote[0] + ": " + vote[2] + ", " + vote[1] + ": " + vote[3];
+		span.classList.add("vote-details");
+		newVote.appendChild(span);
+		wrapper.appendChild(newVote);
+		topV += 45;
+	}
 }
 
 async function loadAdmin(con) {

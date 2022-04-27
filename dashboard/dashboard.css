@@ -261,7 +261,7 @@ body {
 
 #discord {
     background-color: rgb(153, 132, 209);
-    left: 560px;
+    left: 280px;
     color: white;
 }
 
@@ -373,7 +373,7 @@ input:hover {
 }
 
 #bank-stat {
-    left: 80px;
+    left: 50px;
 }
 
 #token-stat {
@@ -391,6 +391,17 @@ input:hover {
     left: 3%;
     top: 300px;
     height: 380px;
+    width: 47%;
+    border-radius: 8px;
+}
+
+#votesu {
+    position: absolute;
+    background-color: #F6F8FA;
+    position: absolute;
+    left: 2%;
+    top: 380px;
+    height: 200px;
     width: 47%;
     border-radius: 8px;
 }
