@@ -598,10 +598,16 @@ async function loadUser(con) {
 		let newVote = document.createElement("div");
 		newVote.classList.add("vote-row");
 		newVote.style.top = "" + topV + "px";
-		let span = document.createElement("span");
-		span.innerHTML = vote[0] + ": " + vote[2] + ", " + vote[1] + ": " + vote[3];
-		span.classList.add("vote-details");
-		newVote.appendChild(span);
+		let div1 = document.createElement("div");
+		div1.classList.add("option1");
+		div1.innerHTML = vote[0];
+
+		let div2 = document.createElement("div");
+		div2.classList.add("option2");
+		div2.innerHTML = vote[1];
+
+		newVote.appendChild(div1);
+		newVote.appendChild(div2);
 		wrapper.appendChild(newVote);
 		topV += 45;
 	}

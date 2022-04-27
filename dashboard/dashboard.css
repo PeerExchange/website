@@ -257,6 +257,7 @@ body {
 #website {
     background-color: #3ece75;
     left: 40px;
+    color: white;
 }
 
 #discord {
@@ -495,4 +496,44 @@ input:hover {
 #withdraw-button {
     right: 7%;
     top: 380px;
+}
+
+.option1 {
+    position: absolute;
+    text-align: center;
+    width: 47%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #3ece75;
+    border-radius: 8px;
+    left: 2%;
+    top: 5px;
+    user-select: none;
+    opacity: 80%;
+    transition: all 0.4s;
+}
+
+.option1:hover {
+    cursor: pointer;
+    opacity: 100%;
+}
+
+.option2 {
+    position: absolute;
+    text-align: center;
+    width: 47%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgba(255,100,100);
+    border-radius: 8px;
+    right: 2%;
+    top: 5px;
+    user-select: none;
+    opacity: 80%;
+    transition: all 0.4s;
+}
+
+.option2:hover {
+    cursor: pointer;
+    opacity: 100%;
 }
