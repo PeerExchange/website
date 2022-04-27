@@ -409,12 +409,12 @@ const ORG_ABI = [
 ];
 
 window.onload = function() {
-    getMetamask();
-    //document.getElementById("left-nav").style.display = "none";
+    //getMetamask();
+    document.getElementById("left-nav").style.display = "none";
     //document.getElementById("user-nav").style.display = "block";
-    //document.getElementById("right-nav").style.display = "none";
+    document.getElementById("right-nav").style.display = "none";
 	//document.getElementById("search-nav").style.display = "block";
-	//document.getElementById("admin-nav").style.display = "block";
+	document.getElementById("admin-nav").style.display = "block";
 }
 
 async function getMetamask() {
@@ -606,9 +606,15 @@ async function loadAdmin(con) {
 	let wrapper = document.getElementById("votesa");
 	let topV = 5;
 	for (let i = 0; i < voteCount; i += 1) {
+		let vote = await orgContract.methods.getVote(i);
+		console.log(vote);
 		let newVote = document.createElement("div");
 		newVote.classList.add("vote-row");
 		newVote.style.top = "" + topV + "px";
+		let span = document.createElement("span");
+		span.innerHTML = "Words";
+		span.classList.add("vote-details");
+		newVote.appendChild(span);
 		wrapper.appendChild(newVote);
 		topV += 45;
 	}

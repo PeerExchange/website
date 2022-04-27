@@ -373,11 +373,11 @@ input:hover {
 }
 
 #bank-stat {
-    left: 60px;
+    left: 80px;
 }
 
 #token-stat {
-    left: 100px;
+    left: 80px;
 }
 
 #recurring-stat {
@@ -444,4 +444,10 @@ input:hover {
     background-color: white;
     border-radius: 8px;
     height: 40px;
+}
+
+.vote-details {
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
