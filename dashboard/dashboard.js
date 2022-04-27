@@ -593,6 +593,10 @@ async function loadAdmin(con) {
 	document.getElementById("aaddress").innerHTML = "Organization Contract Address: " + con;
 	await orgContract.getPastEvents("NewUser", {fromBlock: 0})
 	.then((events) => document.getElementById("user-stat").innerHTML = events.length);
+	document.getElementById("bank-stat").innerHTML = await web3.eth.getBalance(con);
+	document.getElementById("token-stat").innerHTML = await orgContract.methods.totalSupply().call();
+	await orgContract.getPastEvents("RecurringDonation", {fromBlock: 0})
+	.then((events) => document.getElementById("recurring-stat").innerHTML = events.length);
 }
 
 async function donate(address, amount) {
