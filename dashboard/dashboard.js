@@ -422,8 +422,14 @@ async function getMetamask() {
         try {
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
             account = accounts[0];
-            document.getElementById("address").innerHTML = account;
-            loadOrgs();
+			const chain_id = await ethereum.request({method: "eth_chainId"});
+			if (chain_id == "0x4") {
+				document.getElementById("address").innerHTML = account;
+            	loadOrgs();
+			} else {
+				alert("Please set your network to Rinkeby first");
+        		window.location.href = "../index.html";
+			}
         } catch(error) {}
 
     } else {
